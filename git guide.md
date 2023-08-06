@@ -1,46 +1,108 @@
-# Краткое руководство Git
+<img src="git_logo.png" width="25%" height="25%"/>
 
-## Начальная настройка
-### git config --global user.name "[name]"
+# <hdr>Краткое руководство по Git</hdr>
+## <hdr>Содержание:</hdr>
+* [Начальная настройка](#начальная-настройка)
+* [Начало работы с репозиторием](#начало-работы-с-репозиторием)
+* [Работа с ветками](#работа-с-ветками)
+* [Отслеживание изменений](#отслеживание-изменений)
+* [Фиксация изменений](#фиксация-изменений)
+* [Синхронизация изменений](#синхронизация-изменений)
+
+## <hdr>Начальная настройка</hdr>
+### <cmd>git config</cmd> <subcmd>--global user.name</subcmd> <arg>"[name]"</arg>
 установка имени, которым будут подписаны коммиты
 
-### git config --global user.email "[e-mail]"
+### <cmd>git config</cmd> <subcmd>--global user.email</subcmd> <arg>"[e-mail]"</arg>
 установка адреса электронной почты, которым будут подписаны коммиты
 
-### git config --global color.ui auto
+### <cmd>git config</cmd> <subcmd>--global color.ui</subcmd> <arg>auto</arg>
 подсветка синтаксиса в командной строке
 
 ---
-## Начало работы с репозиторием
-### git clone [URL]
+## <hdr>Начало работы с репозиторием</hdr>
+### <cmd>git clone</cmd> <arg>[URL]</arg>
 клонирование репозитория с удаленного сервера
 
-### git init
+### <cmd>git init</cmd>
 создание репозитория в текущей рабочей директории
 
-### git remote add [rem_name] [URL]
+### <cmd>git remote</cmd> <subcmd>add</subcmd> <arg>[rem_name] [URL]</arg>
 подключение удаленного репозитория к локальному
 
 ---
-## Работа с ветками
-### git branch
+## <hdr>Работа с ветками</hdr>
+### <cmd>git branch</cmd>
 вывод списка всех веток, а также показывает текущую ветку
 
-### git branch [br_name]
+### <cmd>git branch</cmd> <arg>[br_name]</arg>
 создание новой ветки с указанным именем
 
-### git checkout [br_name]
+### <cmd>git checkout</cmd> <arg>[br_name]</arg>
 переключение на ветку с указанным именем
 
-### git checkout -b [br_name]
-комбинация branch и checkout - создание ветки с указанным именем и переключение на неё
+### <cmd>git checkout</cmd> <subcmd>-b</subcmd> <arg>[br_name]</arg>
+комбинация <cmd>branch</cmd> и <cmd>checkout</cmd> - создание ветки с указанным именем и переключение на неё
 
-## Отслеживание изменений
-### git status
+### <cmd>git merge</cmd> <arg>[br_name]</arg>
+слияние текущей ветки и ветки с указанным именем
+
+### <cmd>git branch</cmd> <subcmd>-d</subcmd> <arg>[br_name]</arg>
+удаление ветки с указанным именем
+
+---
+## <hdr>Отслеживание изменений</hdr>
+### <cmd>git status</cmd>
 вывод состояния репозитория, в том числе текущей ветки, списка файлов, которые были изменены или не отслеживаются и т.д.
 
-### git diff
+### <cmd>git diff</cmd>
 вывод изменений в файлах, которые еще не были добавлены в индекс
 
-### git log
-вывод истории коммитов текущей ветки
+### <cmd>git log</cmd>
+### <cmd>git log</cmd> <subcmd>--oneline</subcmd>
+вывод истории коммитов текущей ветки\
+<subcmd>--oneline</subcmd> - краткая версия истории
+
+---
+## <hdr>Фиксация изменений</hdr>
+### <cmd>git add</cmd> <arg>[file]</arg>
+### <cmd>git add</cmd> <arg>.</arg>
+добавление указанного файла в индекс\
+<arg>.</arg> - добавление всех файлов, которые были изменены или не отслеживаются
+
+### <cmd>git commit</cmd> <subcmd>-m</subcmd> <arg>"[message]"</arg>
+фиксация состояния файлов, добавленных в индекс, в истории ветки
+
+---
+## <hdr>Синхронизация изменений</hdr>
+### <cmd>git push</cmd> <arg>[rem_name] [br_name]</arg>
+загрузка последних локальных изменений указанной ветки в удаленный репозиторий
+
+### <cmd>git fetch</cmd>
+загрузка последних изменений из удаленного репозитория
+
+### <cmd>git merge</cmd>
+слияние последних изменений, полученных в результате выполнения <cmd>fetch</cmd>, с локальным репозиторием
+
+### <cmd>git pull</cmd>
+комбинация <cmd>fetch</cmd> и <cmd>merge</cmd> - загрузка из удаленного репозитория и слияние с локальным репозиторием последних изменений
+
+
+
+<style>
+    hdr {
+        color: lightblue
+    }
+
+    cmd {
+        color: orange
+    }
+
+    subcmd {
+        color: yellow
+    }
+
+    arg {
+        color: lightgreen
+    }
+</style>
